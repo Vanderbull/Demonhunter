@@ -1,0 +1,11 @@
+-------- Edit and Continue build started --------
+
+Microsoft (R) Incremental Linker Version 8.00.50727.42
+Copyright (C) Microsoft Corporation.  All rights reserved.
+--------------------- Done ----------------------
+
+1>------ Build started: Project: Demon Hunter, Configuration: Debug Win32 ------
+1>Embedding manifest...
+1>Build log was saved at "file://c:\Documents and Settings\Fredrik\Mina dokument\Visual Studio 2005\Projects\gamla projekt c++\Demon Hunter\Demon Hunter\Debug\BuildLog.htm"
+1>Demon Hunter - 0 error(s), 0 warning(s)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
