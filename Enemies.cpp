@@ -1,7 +1,8 @@
 #pragma once
+#include <list>
+
 #include "Enemies.h"
 #include "Game.h"
-#include <list>
 #include "Timers.h"
 #include "Objects.h"
 #include "Collision.h"
@@ -13,7 +14,6 @@ void Enemy::Set_Clips( int WhichTypeOfEnemy )
 	// enemy type zombie
 	if( WhichTypeOfEnemy == 0 )
 	{
-	
 		for( int i = 0; i < 10; i++ )
 		{
 			EnemyClips[ i ].x = i * Enemy_Width;
@@ -53,7 +53,6 @@ void Enemy::Set_Clips( int WhichTypeOfEnemy )
 			Skulls[ i ].h = Enemy_Height;
 		}
 	}
-	
 }
 
 // sets frame for skeleton
@@ -163,7 +162,9 @@ void Enemy::SetFrameSkull()
 		Frame = 9;
 	}
 	else
+	{
 		Frame++;
+	}
 }
 
 // frame stuff
@@ -224,7 +225,9 @@ void Boss::UpdateFrame()
 		Frame = 0;
 	}
 	else
+	{
 		Frame++;
+	}
 }
 
 void Boss::UpdateBoss()
@@ -296,10 +299,7 @@ void Boss::UpdateBoss()
 				{
 					Length = 50;
 				}
-				My_BossHead.push_back(	CreateBossHeads(	xPos, 
-													yPos + 10, 
-													surface,
-													Length ) );
+				My_BossHead.push_back(	CreateBossHeads( xPos, yPos + 10, surface, Length ) );
 				SizeHeads++;
 			}
 
@@ -328,26 +328,22 @@ void Boss::UpdateBoss()
 	{
 		case BOSS_IDLE:
 			{
-				SDL_BlitSurface( gamestate.GetSurface( surface ), 
-					&GetClips( GetFrame() ),
-								gamestate.BackBuffer, &ReturnDestRect() );
+				SDL_BlitSurface( gamestate.GetSurface( surface ), &GetClips( GetFrame() ), 
+						gamestate.BackBuffer, &ReturnDestRect() );
 			}
 		case BOSS_ATTACK:
 			{
-				SDL_BlitSurface( gamestate.GetSurface( surface ),
-				&GetClips( GetFrame() ), 
-				gamestate.BackBuffer, &ReturnDestRect() );
+				SDL_BlitSurface( gamestate.GetSurface( surface ), &GetClips( GetFrame() ), 
+						gamestate.BackBuffer, &ReturnDestRect() );
 			}
 		case BOSS_DIE:
 			{
-				SDL_BlitSurface( gamestate.GetSurface( surface ),
-				&GetClips( GetFrame() ), 
-				gamestate.BackBuffer, &ReturnDestRect() );
+				SDL_BlitSurface( gamestate.GetSurface( surface ), &GetClips( GetFrame() ), 
+						gamestate.BackBuffer, &ReturnDestRect() );
 			}
 	}
 
 	UpdateHeads();
-	
 }
 
 // does all update on head, against the demon, checks frame, and lifelenght
@@ -355,12 +351,10 @@ void Boss::UpdateHeads()
 {
 	if( My_BossHead.size() != 0 )
 	{
-
 		float HeadSpeed = 20.0f * ( gamestate.dt / 1000.0f );
 		float Crash = 50.0f * ( gamestate.dt / 1000.0f );
 		float HowFarSpeed = 300.0f * ( gamestate.dt / 1000.0f );
-		
-		
+			
 		list< Heads* > vRemoveHead;
 		list< Heads* >::iterator vRemoveIterHead;
 
@@ -389,7 +383,6 @@ void Boss::UpdateHeads()
 					}
 					timer.Timer_Hit++;
 				}
-
 			}
 
 			if( temp->HowFar >= temp->length )
@@ -413,7 +406,6 @@ void Boss::UpdateHeads()
 								vRemoveHead.push_back( (*i) );
 								temp->SetFrame( 4 );
 							}
-
 							temp->HeadTimer = 0;
 						}
 					}
@@ -448,8 +440,8 @@ void Boss::UpdateHeads()
 
 			SDL_Rect HeadDest = { temp->xPos, temp->yPos, temp->Width, temp->Height };
 			
-			SDL_BlitSurface(	gamestate.GetSurface( temp->surface ), &temp->GetClips( temp->GetFrame() ),
-								gamestate.BackBuffer, &HeadDest );
+			SDL_BlitSurface( gamestate.GetSurface( temp->surface ), &temp->GetClips( temp->GetFrame() ), 
+					gamestate.BackBuffer, &HeadDest );
 	
 		}
 
@@ -474,16 +466,11 @@ Heads * Boss::CreateBossHeads( int xPos, int yPos, int surface, int lengthOfTrav
 	temp->radius = ( temp->HeadWidth > temp->HeadHeight ) ? temp->HeadWidth / 2 : temp->HeadHeight;
 
 	return temp;
-
 }
 
 SDL_Rect Boss::ReturnDestRect()
 {
-	
-	SDL_Rect destRect = {	xPos, 
-							yPos,
-							Width,  
-							Height };
+	SDL_Rect destRect = {	xPos, yPos, Width, Height };
 	return destRect;
 }
 
@@ -523,7 +510,6 @@ Boss::Boss()
 		Clips[ i ].y = 0;
 		Clips[ i ].h = Height;
 		Clips[ i ].w = Width;
-
 	}
 }
 
@@ -571,14 +557,12 @@ Heads::Heads()
 	Clips[5].y = 80;
 	Clips[5].h = 54;
 	Clips[5].w = 70;
-
 }
 
 
 // draws all enemies skeleton, skull, zombies, checks collision and updates frame
 void Control_Enemies::Draw_Enemies()
 {
-	
 	list< Enemy* > vRemoveFiende;
 	list< Enemy* >::iterator vRemoveIterFienden;
 	Collide = false;
@@ -709,7 +693,7 @@ void Control_Enemies::Draw_Enemies()
 								}
 							
 
-							SDL_BlitSurface(	gamestate.GetSurface( enemy->Surface ), &enemy->SkeletonClips[ 0 ][ enemy->Frame ],
+							SDL_BlitSurface( gamestate.GetSurface( enemy->Surface ), &enemy->SkeletonClips[ 0 ][ enemy->Frame ],
 												gamestate.BackBuffer, &EnemyDest );
 							enemy->SetFrame();
 							enemy->PrevFrameSkel = enemy->Frame;
@@ -725,7 +709,7 @@ void Control_Enemies::Draw_Enemies()
 									enemy->xPos -= speed;
 								}
 
-								SDL_BlitSurface(	gamestate.GetSurface( enemy->Surface ), &enemy->SkeletonClips[ 0 ][ enemy->Frame ],
+								SDL_BlitSurface( gamestate.GetSurface( enemy->Surface ), &enemy->SkeletonClips[ 0 ][ enemy->Frame ],
 												gamestate.BackBuffer, &EnemyDest );
 								enemy->SetFrame();
 								enemy->PrevFrameSkel = enemy->Frame;
@@ -733,7 +717,7 @@ void Control_Enemies::Draw_Enemies()
 						}
 						else
 						{
-							SDL_BlitSurface(	gamestate.GetSurface( enemy->Surface ), &enemy->SkeletonClips[ 0 ][ enemy->PrevFrameSkel ],
+							SDL_BlitSurface( gamestate.GetSurface( enemy->Surface ), &enemy->SkeletonClips[ 0 ][ enemy->PrevFrameSkel ],
 												gamestate.BackBuffer, &EnemyDest );
 						}
 					}
@@ -747,8 +731,6 @@ void Control_Enemies::Draw_Enemies()
 	{
 		My_Enemies.remove(*vRemoveIterFienden);
 	}
-
-	
 }
 
 // gives the enemy the attributes he should have
@@ -787,8 +769,6 @@ Enemy * Control_Enemies::CreateEnemy( int xPos, int yPos, int surface )
 	int Height, Width;
 	Height = temp->Enemy_Height / 2;
 	Width = temp->Enemy_Width / 2;
-
-	
 
 	if( temp->Surface == Zombie )
 	{
@@ -861,4 +841,3 @@ Control_Enemies::Control_Enemies()
 	Skeleton = 8;
 	Skull = 18;
 }
-
