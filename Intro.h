@@ -1,8 +1,7 @@
 #pragma once
-#include <SDL.h>
 #include <string>
 
-// Fredik Zaar SP6 Demon Hunter
+#include <SDL.h>
 
 using namespace std;
 
@@ -60,5 +59,4 @@ public:
 		Sixth, Seventh, Eight;
 
 	SDL_Surface * IntroSurfaces[ 1 ];
-
 };
