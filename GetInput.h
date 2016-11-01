@@ -1,6 +1,7 @@
 #pragma once
-#include "SDL.h"
 #include <string>
+
+#include "SDL.h"
 
 //The key press interpreter
 class StringInput
@@ -25,5 +26,4 @@ class StringInput
 
     //The text surface
     SDL_Surface *text;
-
 };
