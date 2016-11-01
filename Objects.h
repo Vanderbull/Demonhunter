@@ -1,8 +1,7 @@
 #pragma once
-#include "SDL.h"
 #include <list>
 
-// Fredik Zaar SP6 Demon Hunter
+#include "SDL.h"
 
 class Object
 {
@@ -15,8 +14,6 @@ public:
 
 	SDL_Rect Clips[ 10 ];
 	SDL_Rect SingleClip;
-	
-private:
 };
 
 class ThingsToDemon : public Object
@@ -26,9 +23,6 @@ public:
 	void SetClips();
 	SDL_Rect HealthClips[ 6 ];
 	int SurfaceHealth;
-
-private:
-
 };
 
 class PowerUp : public Object
@@ -38,16 +32,12 @@ public:
 	void SetClips();
 	void SetFrame();
 	bool Left, Right;
-
-private:
 };
 
 class Tree : public Object
 {
 public:
 	Tree();
-	
-private:
 };
 
 class FireBall : public Object
@@ -59,9 +49,6 @@ public:
 	bool FireRight, FireLeft;
 
 	int FireWidth, FireHeight;
-
-private:
-
 };
 
 class Coffin : public Object
@@ -69,8 +56,7 @@ class Coffin : public Object
 public:
 	Coffin();
 	void SetClips();
-	void SetFrames();
-	
+	void SetFrames();	
 };
 
 class Control_Objects
@@ -100,8 +86,6 @@ public:
 	std::list< Coffin * > List_Coffins;
 
 	ThingsToDemon * DemonLife;
-
-private:
 };
 
 extern Control_Objects Control_OBJ;
