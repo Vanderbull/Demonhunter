@@ -1,17 +1,17 @@
 #pragma once
+#include <list>
+
 #include "SDL.h"
 #include "SDL_image.h"
-#include <list>
+
 #include "Objects.h"
 
 enum{ ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_SKULL };
-
 
 // holds info for all the enemies
 class Enemy
 {
 public:
-	
 	void Set_Clips( int WhichTypeOfEnemy );
 	float xPos, yPos;
 	int Enemy_Width, Enemy_Height;
@@ -28,10 +28,7 @@ public:
 	SDL_Rect SkeletonClips[ 4 ][ 14 ];
 	SDL_Rect EnemyClips[ 10 ];
 	SDL_Rect Skulls[ 21 ];
-
-private:
 };
-
 
 class MovingThings
 {
@@ -62,7 +59,6 @@ public:
 	float HeadTimer;
 
 	int HeadHeight, HeadWidth;
-
 };
 
 class Boss : public MovingThings
@@ -117,7 +113,6 @@ public:
 	std::list< Enemy* > My_Enemies;
 	Enemy * CreateEnemy( int xPos, int yPos, int surface );	
 private:
-
 	std::list< Enemy* > My_Enemies_dead;
 	
 	int Zombie, Skeleton, Skull;
@@ -128,5 +123,3 @@ private:
 };
 
 extern Control_Enemies Control_ENEMY;
-
-
