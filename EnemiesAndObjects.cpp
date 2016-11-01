@@ -1,7 +1,8 @@
 #pragma once
+#include <list>
+
 #include "EnemiesAndObjects.h"
 #include "game.h"
-#include <list>
 
 void Enemy::Set_Clips( int WhichTypeOfEnemy )
 { 
@@ -9,7 +10,6 @@ void Enemy::Set_Clips( int WhichTypeOfEnemy )
 	// enemy type zombie
 	if( WhichTypeOfEnemy == 0 )
 	{
-	
 		for( int i = 0; i < 10; i++ )
 		{
 			EnemyClips[ i ].x = i * Enemy_Width;
@@ -33,12 +33,10 @@ void Enemy::Set_Clips( int WhichTypeOfEnemy )
 			}
 		}
 	}
-	
 }
 
 void Enemy::SetFrame()
 {
-	
 	if( Walk )
 	{
 		if( WalkFrame == 8 )
@@ -83,8 +81,6 @@ void Enemy::SetFrame()
 
 		Frame = DieFrame;
 	}
-
-	
 }
 int Heads::GetFrame()
 {
@@ -161,13 +157,9 @@ void Boss::UpdateBoss()
 			if( HeadAnimation == true )
 			{
 				HeadTimer = 0;
-				My_BossHead.push_back(	CreateBossHeads(	xPos, 
-													yPos + 10, 
-													surface,
-													20 * SizeHeads ));
+				My_BossHead.push_back(	CreateBossHeads( xPos, yPos + 10, surface, 20 * SizeHeads ));
 				SizeHeads++;
 			}
-
 			
 			if( GetFrame() >= 4 )
 			{
@@ -193,33 +185,28 @@ void Boss::UpdateBoss()
 	{
 		case BOSS_IDLE:
 			{
-				SDL_BlitSurface( gamestate.GetSurface( surface ), 
-					&GetClips( GetFrame() ),
-								gamestate.screen, &ReturnDestRect() );
+				SDL_BlitSurface( gamestate.GetSurface( surface ), &GetClips( GetFrame() ), 
+						gamestate.screen, &ReturnDestRect() );
 			}
 		case BOSS_ATTACK:
 			{
-				SDL_BlitSurface( gamestate.GetSurface( surface ),
-				&GetClips( GetFrame() ), 
-				gamestate.screen, &ReturnDestRect() );
+				SDL_BlitSurface( gamestate.GetSurface( surface ), &GetClips( GetFrame() ), 
+						gamestate.screen, &ReturnDestRect() );
 			}
 		case BOSS_DIE:
 			{
-				SDL_BlitSurface( gamestate.GetSurface( surface ),
-				&GetClips( GetFrame() ), 
-				gamestate.screen, &ReturnDestRect() );
+				SDL_BlitSurface( gamestate.GetSurface( surface ), &GetClips( GetFrame() ), 
+						gamestate.screen, &ReturnDestRect() );
 			}
 	}
 
 	UpdateHeads();
-	
 }
 
 void Boss::UpdateHeads()
 {
 	if( My_BossHead.size() != 0 )
 	{
-
 		list< Heads* > vRemoveHead;
 		list< Heads* >::iterator vRemoveIterHead;
 
@@ -264,7 +251,6 @@ void Boss::UpdateHeads()
 							temp->HeadTimer = 0;
 						}
 					}
-
 					temp->yPos += 10;
 				}
 			}
@@ -275,8 +261,8 @@ void Boss::UpdateHeads()
 			}
 			SDL_Rect HeadDest = { temp->xPos, temp->yPos, temp->Width, temp->Height };
 			
-			SDL_BlitSurface(	gamestate.GetSurface( temp->surface ), &temp->GetClips( temp->GetFrame() ),
-								gamestate.screen, &HeadDest );
+			SDL_BlitSurface( gamestate.GetSurface( temp->surface ), &temp->GetClips( temp->GetFrame() ), 
+					gamestate.screen, &HeadDest );
 	
 		}
 
@@ -286,7 +272,6 @@ void Boss::UpdateHeads()
 			My_BossHead.remove( *vRemoveIterHead );
 		}
 	}
-
 	return;
 }
 
@@ -301,16 +286,11 @@ Heads * Boss::CreateBossHeads( int xPos, int yPos, int surface, int lengthOfTrav
 	temp->radius = ( temp->Width > temp->Height ) ? temp->Width / 2 : temp->Height;
 
 	return temp;
-
 }
 
 SDL_Rect Boss::ReturnDestRect()
 {
-	
-	SDL_Rect destRect = {	xPos, 
-							yPos,
-							Width,  
-							Height };
+	SDL_Rect destRect = { xPos, yPos, Width, Height };
 	return destRect;
 }
 
@@ -345,7 +325,6 @@ Boss::Boss()
 		Clips[ i ].y = 0;
 		Clips[ i ].h = Height;
 		Clips[ i ].w = Width;
-
 	}
 }
 
@@ -353,8 +332,8 @@ Animal::Animal()
 {
 	Frame = 0;
 	PrevFrameCrow = 0;
-	Height =	64;
-	Width =		64;
+	Height = 64;
+	Width =	64;
 
 	for( int i = 0; i < 16; i++ )
 	{
@@ -363,7 +342,6 @@ Animal::Animal()
 		Clips[ i ].h = Height;
 		Clips[ i ].w = Width;
 	}
-
 }
 
 Heads::Heads()
@@ -405,7 +383,6 @@ Heads::Heads()
 	Clips[5].y = 80;
 	Clips[5].h = 54;
 	Clips[5].w = 70;
-
 }
 
 void Animal::Setframe()
@@ -419,4 +396,3 @@ void Animal::Setframe()
 		Frame++;
 	}
 }
-
