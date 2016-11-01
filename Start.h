@@ -1,8 +1,6 @@
 #pragma once
 #include <SDL.h>
 
-// Fredik Zaar SP6 Demon Hunter
-
 class FirstScreen
 {
 public:
