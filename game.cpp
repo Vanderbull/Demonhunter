@@ -23,8 +23,6 @@
 #include "OutroFinish.h"
 #include "GetInput.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 Gamestate gamestate;
 
 Gamestate::Gamestate()
