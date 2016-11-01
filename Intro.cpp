@@ -2,8 +2,6 @@
 #include <SDL.h>
 #include "Game.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 void DancingDragon::SetFrame()
 {
 	if( Frame == 21 )
