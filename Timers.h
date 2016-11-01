@@ -1,7 +1,5 @@
 #pragma once
 
-// Fredik Zaar SP6 Demon Hunter
-
 class Timer
 {
 public:
