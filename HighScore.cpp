@@ -17,8 +17,7 @@ FillHighScore::FillHighScore()
 		infile >> temp;
 		infile >> list[ i ].name;
 		infile >> temp;
-		infile >> list[ i ].Score;	
-		
+		infile >> list[ i ].Score;		
 	}
 
 	for( int i = 0; i < 6; i++ )
