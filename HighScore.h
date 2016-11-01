@@ -3,8 +3,6 @@
 #include <string>
 #include <fstream>
 
-// Fredrik Zaar SP6 
-
 using namespace std;
 
 struct Highscore
