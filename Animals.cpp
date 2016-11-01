@@ -5,9 +5,11 @@
 
 Control_Animals Control_Anim;
 
+#define NUMBER_OF_CLIPS 16
+
 void Animal::Setframe()
 {	
-	if( Frame == 15 )
+	if( Frame < NUMBER_OF_CLIPS )
 	{
 		Frame = 0;
 	}
@@ -21,15 +23,19 @@ Animal::Animal()
 {
 	Frame = 0;
 	PrevFrameCrow = 0;
-	Height = 64;
-	Width =	64;
+	
+	Size.x = 64;
+	Size.y = 64;
+	// Replaced by SDL_Point
+	//Height = 64;
+	//Width = 64;
 
-	for( int i = 0; i < 16; i++ )
+	for( int i = 0; i < NUMBER_OF_CLIPS; i++ )
 	{
-		Clips[ i ].x = i * Width;
+		Clips[ i ].x = i * Size.x;
 		Clips[ i ].y = 0;
-		Clips[ i ].h = Height;
-		Clips[ i ].w = Width;
+		Clips[ i ].h = Size.y;
+		Clips[ i ].w = Size.x;
 	}
 }
 
@@ -44,13 +50,22 @@ void Control_Animals::Draw_Animals()
 		{
 			Animal * animal = (*i);
 			
-			animal->xPos -= Speed;
+			animal->Position.y -= Speed;
+			//animal->xPos -= Speed;
 
+			SDL_Rect CrowDest = {	
+				animal->Position.x, animal->Position.y, 	
+				animal->Size.x, 
+				animal->Size.y 
+			};
+
+			/*
 			SDL_Rect CrowDest = {	
 				animal->xPos, animal->yPos, 	
 				animal->Width, 
 				animal->Height 
 			};
+			*/
 														
 			if( gamestate.OK_PaceEnemy() )
 			{
@@ -67,6 +82,18 @@ void Control_Animals::Draw_Animals()
 			}
 		}
 	}
+}
+
+Animal * Control_Animals::CreateAnimal( SDL_Point iPosition, int surface )
+{
+	Animal * temp = new Animal;
+	temp->surface = surface;
+	temp->Position.x = iPosition.x;
+	temp->Position.y = iPosition.y;
+
+	temp->radius = ( temp->Size.x > temp->Size.y ) ? temp->Size.x / 2 : temp->Size.y / 2;
+
+	return temp;
 }
 
 Animal * Control_Animals::CreateAnimal( int xPos, int yPos, int surface )
