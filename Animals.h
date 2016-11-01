@@ -1,6 +1,7 @@
 #pragma once
-#include <list>
 #include <SDL.h>
+
+#include <list>
 
 class NotEnemies
 {
@@ -21,9 +22,6 @@ public:
 
 	void Setframe();
 	int PrevFrameCrow;
-	
-
-private:
 };
 
 // the class that controls the animals
@@ -38,10 +36,8 @@ public:
 
 	Animal * CreateAnimal( int xPos, int yPos, int surface );
 
-	
 private:
 	std::list< Animal* > My_Animals;
-
 };
 
 extern Control_Animals Control_Anim;
