@@ -4,8 +4,6 @@
 #include "Objects.h"
 #include "Enemies.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 // holds all the info on the collisions
 class Control_Collision
 {
