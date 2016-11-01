@@ -1,8 +1,6 @@
 #include "SoundAndMusic.h"
 #include "SDL_mixer.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 Control_Sound_And_Music Sound_Music;
 
 Control_Sound_And_Music::Control_Sound_And_Music()
