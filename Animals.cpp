@@ -1,5 +1,6 @@
-#include "Animals.h"
 #include <SDL.h>
+
+#include "Animals.h"
 #include "game.h"
 
 Control_Animals Control_Anim;
@@ -20,8 +21,8 @@ Animal::Animal()
 {
 	Frame = 0;
 	PrevFrameCrow = 0;
-	Height =	64;
-	Width =		64;
+	Height = 64;
+	Width =	64;
 
 	for( int i = 0; i < 16; i++ )
 	{
@@ -30,7 +31,6 @@ Animal::Animal()
 		Clips[ i ].h = Height;
 		Clips[ i ].w = Width;
 	}
-
 }
 
 void Control_Animals::Draw_Animals()
@@ -46,27 +46,27 @@ void Control_Animals::Draw_Animals()
 			
 			animal->xPos -= Speed;
 
-			SDL_Rect CrowDest = {	animal->xPos, animal->yPos, 	
-									animal->Width, 
-									animal->Height };  
-
+			SDL_Rect CrowDest = {	
+				animal->xPos, animal->yPos, 	
+				animal->Width, 
+				animal->Height 
+			};
 														
 			if( gamestate.OK_PaceEnemy() )
 			{
-				SDL_BlitSurface(	gamestate.GetSurface( animal->surface ),&animal->Clips[ animal->Frame ], 
-									gamestate.BackBuffer, &CrowDest );
+				SDL_BlitSurface( gamestate.GetSurface( animal->surface ),&animal->Clips[ animal->Frame ], 
+				gamestate.BackBuffer, &CrowDest );
+				
 				animal->Setframe();
 				animal->PrevFrameCrow = animal->Frame;
 			}
 			else
-			{
-							
-				SDL_BlitSurface(	gamestate.GetSurface( animal->surface ),&animal->Clips[ animal->PrevFrameCrow ], 
-									gamestate.BackBuffer, &CrowDest );
+			{	
+				SDL_BlitSurface( gamestate.GetSurface( animal->surface ),&animal->Clips[ animal->PrevFrameCrow ], 
+				gamestate.BackBuffer, &CrowDest );
 			}
 		}
 	}
-
 }
 
 Animal * Control_Animals::CreateAnimal( int xPos, int yPos, int surface )
