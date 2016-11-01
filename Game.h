@@ -1,19 +1,21 @@
 #pragma once
+#include <list>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <fstream>
 
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include <string>
-#include <sstream>
-#include <windows.h>
-#include "Paralaxlayers.h"
-#include <iostream>
-#include "Objects.h"
 #include "SDL_mixer.h"
+
+#include <windows.h>
+
+#include "Paralaxlayers.h"
+#include "Objects.h"
 #include "characters.h"
-#include <list>
 #include "Enemies.h"
-#include <fstream>
 #include "Intro.h"
 #include "Start.h"
 #include "Collision.h"
@@ -21,8 +23,8 @@
 #include "GetInput.h"
 #include "HighScore.h"
 
-enum{	GS_INTRO, GS_LEVEL1, GS_LEVEL1BOSS, GS_OUTRO, 
-		GS_LOADING, GS_INTROSTORY, GS_MORPH, GS_DEAD, GS_ENTERNAME };
+enum{ GS_INTRO, GS_LEVEL1, GS_LEVEL1BOSS, GS_OUTRO, 
+     GS_LOADING, GS_INTROSTORY, GS_MORPH, GS_DEAD, GS_ENTERNAME };
 enum{ BOSS_IDLE, BOSS_ATTACK, BOSS_DIE };
 enum{ HEAD_GO, HEAD_DOWN, HEAD_CRASH };
 
@@ -142,8 +144,6 @@ public:
 	DancingDragon * Dragon;
 	FirstScreen * TitleScreen;
 
-	
-
 	int m_srfGrass, m_srfBack, m_srfFence, m_srfClouds, m_srfTree, m_srfEnemyZombie,
 		m_srfSkeleton, m_srfCrow, m_srfCoffin, m_srfTrees, m_srfBlack, m_srfBoss, 
 		m_srfDemonLife, m_srfDemonHealthAndFire, m_srfDragon, m_srfStart, m_srfButtons,
@@ -169,8 +169,5 @@ public:
 	bool Init( SDL_Surface * &screen );
 	void Handle_events( SDL_Event input );
 	void cleanUp();
-
-private:
-
 };
 
