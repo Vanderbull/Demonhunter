@@ -2,8 +2,6 @@
 #include <SDL.h>
 #include "game.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 Control_Animals Control_Anim;
 
 void Animal::Setframe()
