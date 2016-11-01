@@ -1,7 +1,10 @@
 #pragma once
+#include <list>
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-#include <list>
+
+#define NUMBER_OF_CLIPS 16
 
 enum{ ENEMY_ZOMBIE, ENEMY_SKELETON };
 
@@ -10,11 +13,13 @@ class Enemy
 public:
 	
 	void Set_Clips( int WhichTypeOfEnemy );
-	int xPos, yPos;
-	int Enemy_Width, Enemy_Height;
+	SDL_Point Position;
+	//int xPos, yPos;
+	SDL_Point Size;
+	//int Enemy_Width, Enemy_Height;
+	
 	int Surface;
-	int PrevFrameSkel, Frame, radius,
-		WalkFrame, AttackFrame, DieFrame, AnimCounter;
+	int PrevFrameSkel, Frame, radius, WalkFrame, AttackFrame, DieFrame, AnimCounter;
 
 	bool Walk, Attack, Die;
 
@@ -22,22 +27,20 @@ public:
 	
 	SDL_Rect SkeletonClips[ 2 ][ 14 ];
 	SDL_Rect EnemyClips[10];
-
-
-	
-private:
 };
 
 class MovingThings
 {
 public:
-	int xPos, yPos;
+	SDL_Point Position;
+	//int xPos, yPos;
 	int Frame;
 	int radius;
-	int Width, Height;
+	SDL_Point Size;
+	//int Width, Height;
 	
 	int surface;
-	SDL_Rect Clips[ 16 ];
+	SDL_Rect Clips[ NUMBER_OF_CLIPS ];
 };
 
 class Heads : public MovingThings
@@ -54,7 +57,6 @@ public:
 	int HowFar;
 	int state;
 	int HeadTimer;
-
 };
 
 class Boss : public MovingThings
@@ -73,7 +75,8 @@ public:
 	void UpdateBoss();
 	void UpdateHeads();
 
-	Heads * CreateBossHeads( int xPos, int yPos, int surface, int lengthOfTravel );
+	Heads * CreateBossHeads( SDL_Point iPosition, int surface, int lengthOfTravel );
+	//Heads * CreateBossHeads( int xPos, int yPos, int surface, int lengthOfTravel );
 
 	SDL_Rect GetClips( int WhichClip );
 	SDL_Rect ReturnDestRect();
@@ -85,12 +88,9 @@ public:
 	int SizeHeads;
 
 	std::list< Heads* > My_BossHead;
-
-	
 	
 private:
-	int AttackTimer, State;; 
-
+	int AttackTimer, State;
 };
 
 class Animal : public MovingThings
@@ -99,7 +99,5 @@ public:
 	Animal();
 	void Setframe();
 	int PrevFrameCrow;
-
-private:
 };
 
