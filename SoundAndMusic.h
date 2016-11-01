@@ -1,8 +1,6 @@
 #pragma once
 #include "SDL_mixer.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 enum{	MUSIC_START, MUSIC_MENU, MUSIC_OUTRO, SOUND_MORPH, SOUND_HIT, SOUND_FIRE, 
 		SOUND_GETS_HIT, SOUND_DIE, SOUND_BOSS, SOUND_FIREBALL_EXPLODE };
 
