@@ -5,8 +5,6 @@
 #include "time.h"
 #include "Timers.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 const int FRAMES_PER_SECOND = 30;
 using namespace std;
 
