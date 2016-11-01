@@ -1,5 +1,5 @@
-#include "Collision.h"
 #include <cmath>
+#include "Collision.h"
 
 Control_Collision Contr_Coll;
 
@@ -159,7 +159,6 @@ bool Control_Collision::CollisionCircle( Demon *MyDemon, Enemy *MyEnemy, bool Sh
 // checks collision
 bool Control_Collision::CollisionCircle( Demon *MyDemon, Heads *EnemyHead, bool Show )
 {
-
 	if( demon.Triangle == true || demon.TriangleAttack == true && demon.isMovingLeft == true )
 	{
 		// Cache
@@ -268,7 +267,6 @@ bool Control_Collision::CollisionCircle( Demon *MyDemon, Heads *EnemyHead, bool 
  
 	// No collision
 	return false;
-
 }
 
 // checks collision
@@ -325,7 +323,6 @@ bool Control_Collision::CollisionCircle( Demon *MyDemon, Boss *Myboss, bool Show
 		{
 			return true;	// Yep, collision
 		}
-
 	}
 
 	int dist = ( int )sqrt( dx * dx + dy * dy );
@@ -455,7 +452,6 @@ bool Control_Collision::CollisionCircle( Demon *MyDemon, PowerUp *TransForm, boo
 // checks collision
 bool Control_Collision::CheckCollisionWithPlayer( PowerUp *TransForm, int WhichCollisionToUse )
 {
-	
 	bool temp = false;
 
 	if( WhichCollisionToUse == 1 )
@@ -470,8 +466,7 @@ bool Control_Collision::CheckCollisionWithPlayer( PowerUp *TransForm, int WhichC
 void Control_Collision::Circle( long centerx, long centery, long radius )
 {
          long d, y, x;
-
-		 // setup
+	
          d = 3 - (2 * radius);
          x = 0;
          y = radius;
@@ -487,9 +482,12 @@ void Control_Collision::Circle( long centerx, long centery, long radius )
                  SetPixelMine( centerx - x,centery - y );
                  SetPixelMine( centerx - y,centery - x );
 
-                 if (d < 0) {
+                 if (d < 0) 
+		 {
                          d = d + ( 4 * x ) + 6;
-                 } else {
+                 } 
+		 else 
+		 {
                          d = d + 4 * ( x - y ) + 10;
                          y--;
                  }
@@ -511,7 +509,6 @@ void Control_Collision::SetPixelMine( int xPos, int yPos  )
 	dst[ ( yPos * dstPitch / 4 ) + ( xPos ) ] = color;
 
 	SDL_UnlockSurface( gamestate.BackBuffer );
-
 }
 
 
@@ -520,7 +517,6 @@ void Control_Collision::SetPixelMine( int xPos, int yPos  )
 // ----------------------------------------------------------------------------
 bool Control_Collision::CheckCollisionWithPlayer( Enemy *MyEnemy, int WhichCollisionToUse )
 {
-	
 	bool temp = false;
 
 	if( MyEnemy->xPos - demon.xPos >= 150 )
@@ -550,28 +546,27 @@ bool Control_Collision::CheckCollisionWithPlayer( Enemy *MyEnemy, int WhichColli
 // ----------------------------------------------------------------------------
 bool Control_Collision::CollisionBox( Demon *MyDemon, Enemy *MyEnemy, bool Show )
 {
-    int left1, left2;
-    int right1, right2;
-    int top1, top2;
-    int bottom1, bottom2;
+	int left1, left2;
+	int right1, right2;
+	int top1, top2;
+	int bottom1, bottom2;
 
 	left1 = MyDemon->xPos - 10;
 	left2 = MyEnemy->xPos;
 	right1 = MyDemon->xPos + MyDemon->Demon_Width - 10;
 	right2 = MyEnemy->xPos + MyEnemy->Enemy_Width;
 	top1 = MyDemon->yPos;
-    top2 = MyEnemy->yPos;
+	top2 = MyEnemy->yPos;
 	bottom1 = MyDemon->yPos + MyDemon->Demon_Height;
 	bottom2 = MyEnemy->yPos + MyEnemy->Enemy_Height;
 
-    if ( bottom1 < top2 ) return false;
-    if ( top1 > bottom2 ) return false;
+	if ( bottom1 < top2 ) return false;
+	if ( top1 > bottom2 ) return false;
 
-    if ( right1 < left2 ) return false;
-    if ( left1 > right2 ) return false;
+	if ( right1 < left2 ) return false;
+	if ( left1 > right2 ) return false;
 
-    return true;
-
+	return true;
 };
 
 bool Control_Collision::CollisionPixel( Demon *MyDemon, Enemy *MyEnemy )
