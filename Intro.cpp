@@ -23,7 +23,6 @@ void DancingDragon::SetClips()
 		Clips[ i ].h = Height;
 		Clips[ i ].w = Width;
 	}
-
 }
 
 DancingDragon::DancingDragon( int Surface )
@@ -94,13 +93,11 @@ void IntroTalk::DrawBackground()
 	ParallaxLayer  * MyParaBackGround;
 	MyParaBackGround = gamestate.Paralax->getLayer( gamestate.m_srfBlack );
 
-	SDL_Rect scRect = { 0, 0,	MyParaBackGround->m_width, 
-								600 };
+	SDL_Rect scRect = { 0, 0, MyParaBackGround->m_width, 600 };
 
-	SDL_Rect dtRect = {	0, 0, MyParaBackGround->m_width, 600 };
+	SDL_Rect dtRect = { 0, 0, MyParaBackGround->m_width, 600 };
 
 	SDL_BlitSurface( gamestate.GetSurface( gamestate.m_srfBlack ), &scRect, gamestate.BackBuffer, &dtRect ); 
-
 }
 
 // all the talking
@@ -194,8 +191,6 @@ void IntroTalk::DoTalk()
 					LetterWidth++;
 			
 					break;
-
-		
 				}
 			case 1:
 				{
@@ -254,7 +249,6 @@ void IntroTalk::DoTalk()
 					LetterWidth++;
 			
 					break;
-
 				}
 			case 2:
 				{
@@ -314,9 +308,6 @@ void IntroTalk::DoTalk()
 					LetterWidth++;
 			
 					break;
-
-
-
 				}
 			case 3:
 				{
@@ -376,9 +367,6 @@ void IntroTalk::DoTalk()
 			
 					
 					break;
-
-
-
 				}
 			}
 
@@ -456,30 +444,26 @@ void IntroTalk::DoTalk()
 					gamestate.apply_surface( 200, i * 40, IntroSurfaces[ 0 ], gamestate.BackBuffer ); 
 				}
 			}
-
-	
 		}
 
 		if( MyDude )
 		{
 			SDL_Rect destRect = { 0, 0, Width, Height };
-			SDL_BlitSurface(	gamestate.GetSurface( surface ), &srcClips[ MYDUDE ], 
+			SDL_BlitSurface( gamestate.GetSurface( surface ), &srcClips[ MYDUDE ], 
 								gamestate.BackBuffer, &destRect );
-
 		}
 		if( MyDude_Demon )
 		{
 			SDL_Rect destRect = { 620, 0, Width, Height };
-			SDL_BlitSurface(	gamestate.GetSurface( surface ), &srcClips[ MYDUDE_DEMON ], 
+			SDL_BlitSurface( gamestate.GetSurface( surface ), &srcClips[ MYDUDE_DEMON ], 
 								gamestate.BackBuffer, &destRect );
 		}
 
 		if( Father )
 		{
 			SDL_Rect destRect = { 550, 300, Width, Height };
-			SDL_BlitSurface(	gamestate.GetSurface( surface ), &srcClips[ FATHER ], 
+			SDL_BlitSurface( gamestate.GetSurface( surface ), &srcClips[ FATHER ], 
 								gamestate.BackBuffer, &destRect );
-
 		}
 
 		gamestate.FLIP();
@@ -487,7 +471,3 @@ void IntroTalk::DoTalk()
 
 	gamestate.GameCondition = GS_LEVEL1;
 }
-	
-
-	
-
