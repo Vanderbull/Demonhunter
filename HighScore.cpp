@@ -3,8 +3,6 @@
 #include <fstream>
 #include <string>
 
-// Fredrik Zaar SP6
-
 using namespace std;
 
 // reads the list and sorts it
