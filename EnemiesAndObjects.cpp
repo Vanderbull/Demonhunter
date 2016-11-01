@@ -4,9 +4,10 @@
 #include "EnemiesAndObjects.h"
 #include "game.h"
 
+#define NUMBER_OF_CLIPS 16
+
 void Enemy::Set_Clips( int WhichTypeOfEnemy )
 { 
-	
 	// enemy type zombie
 	if( WhichTypeOfEnemy == 0 )
 	{
@@ -47,7 +48,6 @@ void Enemy::SetFrame()
 		{
 			WalkFrame++;
 		}
-
 		Frame = WalkFrame;
 	}
 	else if( Attack )
@@ -78,10 +78,10 @@ void Enemy::SetFrame()
 		{
 			DieFrame++;
 		}
-
 		Frame = DieFrame;
 	}
 }
+
 int Heads::GetFrame()
 {
 	return Frame;
@@ -199,7 +199,6 @@ void Boss::UpdateBoss()
 						gamestate.screen, &ReturnDestRect() );
 			}
 	}
-
 	UpdateHeads();
 }
 
@@ -306,8 +305,11 @@ SDL_Rect Heads::GetClips( int WhichClip )
 
 Boss::Boss()
 {
-	Height = 300;
-	Width = 150;
+	Size.x = 150;
+	Size.y = 300;
+	
+	//Height = 300;
+	//Width = 150;
 
 	HeadsComing = false;
 	HeadAnimation = false;
@@ -321,10 +323,10 @@ Boss::Boss()
 
 	for( int i = 0; i < 8; i++ )
 	{
-		Clips[ i ].x = i * Width;
+		Clips[ i ].x = i * Size.x;
 		Clips[ i ].y = 0;
-		Clips[ i ].h = Height;
-		Clips[ i ].w = Width;
+		Clips[ i ].h = Size.y;
+		Clips[ i ].w = Size.x;
 	}
 }
 
@@ -332,22 +334,28 @@ Animal::Animal()
 {
 	Frame = 0;
 	PrevFrameCrow = 0;
-	Height = 64;
-	Width =	64;
+	Size.x = 64;
+	Size.y = 64;
+	
+	//Height = 64;
+	//Width = 64;
 
-	for( int i = 0; i < 16; i++ )
+	for( int i = 0; i < NUMBER_OF_CLIPS; i++ )
 	{
-		Clips[ i ].x = i * Width;
+		Clips[ i ].x = i * Size.x;
 		Clips[ i ].y = 0;
-		Clips[ i ].h = Height;
-		Clips[ i ].w = Width;
+		Clips[ i ].h = Size.y;
+		Clips[ i ].w = Size.x;
 	}
 }
 
 Heads::Heads()
 {
-	Width = 54;
-	Height = 54;
+	Size.x = 54;
+	Size.y = 54;
+	
+	//Width = 54;
+	//Height = 54;
 	Frame = 0;
 	HowFar = 0;
 	HeadTimer = 0;
@@ -387,7 +395,7 @@ Heads::Heads()
 
 void Animal::Setframe()
 {	
-	if( Frame == 16 )
+	if( Frame == NUMBER_OF_CLIPS )
 	{
 		Frame = 0;
 	}
