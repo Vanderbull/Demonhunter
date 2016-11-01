@@ -5,8 +5,6 @@
 #include <cmath>
 #include "SoundAndMusic.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 Demon demon;
 
 Demon::Demon()
