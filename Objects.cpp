@@ -6,8 +6,6 @@
 #include "Collision.h"
 #include "SoundAndMusic.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 Control_Objects Control_OBJ;
 
 Tree::Tree()
@@ -229,7 +227,7 @@ void Control_Objects::DrawObjects()
 			timer.Timer_PowerUp++;
 		}
 
-		// kolla om han har blivit demon annars sÂ s‰tt till false igen sÂ den kan skapas en gÂng till
+		// kolla om han har blivit demon annars s√• s√§tt till false igen s√• den kan skapas en g√•ng till
 		bool GettingSpooky = Contr_Coll.CheckCollisionWithPlayer( Control_OBJ.WereWolf, 1 );
 		if( GettingSpooky == true )
 		{
