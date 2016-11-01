@@ -1,7 +1,5 @@
 #pragma once
 
-// Fredik Zaar SP6 Demon Hunter
-
 #include "SDL.h"
 #include "SDL_image.h"
 
