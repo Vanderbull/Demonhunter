@@ -2,8 +2,6 @@
 #include "SDL.h"
 #include <string>
 
-// Fredik Zaar SP6 Demon Hunter
-
 //The key press interpreter
 class StringInput
 {  
