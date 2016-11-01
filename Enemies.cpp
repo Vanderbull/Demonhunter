@@ -6,8 +6,6 @@
 #include "Objects.h"
 #include "Collision.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 Control_Enemies Control_ENEMY;
 
 void Enemy::Set_Clips( int WhichTypeOfEnemy )
@@ -592,7 +590,7 @@ void Control_Enemies::Draw_Enemies()
 		list< Enemy* >::iterator i = My_Enemies.begin();
 		for( ; i != My_Enemies.end(); ++i )
 		{
-				// kollar om kollision sker och om min gubbe är i något attack state
+				// kollar om kollision sker och om min gubbe Ã¤r i nÃ¥got attack state
 				Enemy * enemy = (*i);
 
 				// checks collision with player using circlecollision
