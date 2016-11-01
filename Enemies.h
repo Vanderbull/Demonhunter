@@ -4,8 +4,6 @@
 #include <list>
 #include "Objects.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 enum{ ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_SKULL };
 
 
