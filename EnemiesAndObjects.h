@@ -5,8 +5,6 @@
 
 enum{ ENEMY_ZOMBIE, ENEMY_SKELETON };
 
-
-
 class Enemy
 {
 public:
