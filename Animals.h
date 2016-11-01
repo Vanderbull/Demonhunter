@@ -2,8 +2,6 @@
 #include <list>
 #include <SDL.h>
 
-// Fredik Zaar SP6 Demon Hunter
-
 class NotEnemies
 {
 public:
