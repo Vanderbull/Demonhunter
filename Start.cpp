@@ -1,8 +1,6 @@
 #include "Start.h"
 #include <SDL.h>
 
-// Fredik Zaar SP6 Demon Hunter
-
 FirstScreen::FirstScreen( int ButtonX, int Surface, int SurfaceButtons )							
 {
 	xPos = 0;
