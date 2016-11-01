@@ -1,8 +1,6 @@
 #include "GetInput.h"
 #include "Game.h"
 
-// Fredik Zaar SP6 Demon Hunter
-
 StringInput::StringInput()
 {
     //Initialize the string
