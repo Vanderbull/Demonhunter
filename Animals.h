@@ -6,20 +6,22 @@
 class NotEnemies
 {
 public:
-	float xPos, yPos;
+	SDL_Point Position;
+	SDL_Point Size;
+	
+	//float xPos, yPos;
 	int Frame, State;
-	int Height, Width;
+	//int Height, Width;
 	int radius;
 	int surface;
 };
 
+#define NUMBER_OF_CLIPS 17
 class Animal : public NotEnemies
 {
 public:
 	Animal();
-	SDL_Rect Clips[ 17 ];
-	
-
+	SDL_Rect Clips[ NUMBER_OF_CLIPS ];
 	void Setframe();
 	int PrevFrameCrow;
 };
@@ -34,7 +36,8 @@ public:
 
 	int CrowTurf;
 
-	Animal * CreateAnimal( int xPos, int yPos, int surface );
+	Animal * CreateAnimal( SDL_POint iPosition, int surface );
+	//Animal * CreateAnimal( int xPos, int yPos, int surface );
 
 private:
 	std::list< Animal* > My_Animals;
