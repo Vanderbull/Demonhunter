@@ -1,8 +1,6 @@
 #include "Collision.h"
 #include <cmath>
 
-// Fredik Zaar SP6 Demon Hunter
-
 Control_Collision Contr_Coll;
 
 // checks collision
