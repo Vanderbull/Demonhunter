@@ -20,7 +20,6 @@
 #include "OutroFinish.h"
 #include "GetInput.h"
 #include "HighScore.h"
-// Fredik Zaar SP6 Demon Hunter
 
 enum{	GS_INTRO, GS_LEVEL1, GS_LEVEL1BOSS, GS_OUTRO, 
 		GS_LOADING, GS_INTROSTORY, GS_MORPH, GS_DEAD, GS_ENTERNAME };
