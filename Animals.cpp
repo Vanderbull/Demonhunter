@@ -4,6 +4,8 @@
 
 Control_Animals Control_Anim;
 
+const int MaxFrames = 16;
+
 void Animal::Setframe()
 {	
 	if( Frame == 15 )
