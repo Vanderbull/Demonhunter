@@ -4,7 +4,20 @@
 
 Control_Animals Control_Anim;
 
-const int MaxFrames = 16;
+const int MaxFrame = 15;
+
+int Animal::CurrentFrame()
+{
+	if(Frame == MaxFrame )
+	{
+		return Frame = 0;
+	}
+	else
+	{
+		// returns the current frame and increments it for the next iteration to return the next frame
+		return Frame++;
+	}
+};
 
 void Animal::Setframe()
 {	
