@@ -19,11 +19,9 @@ public:
 	SDL_Rect Clips[ 17 ];
 	
 
+	int CurrentFrame();
 	void Setframe();
 	int PrevFrameCrow;
-	
-
-private:
 };
 
 // the class that controls the animals
